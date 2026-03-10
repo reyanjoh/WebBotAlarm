@@ -26,12 +26,12 @@ const connect = async () => {
 
 connectButton.addEventListener("click", connect);
 
-const blinkBG = () => {
-  body.style.backgroundColor = "red";
-  setTimeout(() => {
-    body.style.backgroundColor = "black";
-  }, 500);
-};
+// const blinkBG = () => {
+//   body.style.backgroundColor = "red";
+//   setTimeout(() => {
+//     body.style.backgroundColor = "black";
+//   }, 500);
+// };
 
 const handleData = (e) => {
   let value = new TextDecoder().decode(e.target.value).trim();
@@ -39,9 +39,10 @@ const handleData = (e) => {
   if (value === "intruder!" && alertPlayed === false) {
     alert.play();
     body.style.backgroundColor = "red";
-  }
-  if (alertPlayed === true) {
-    alertPlayed = false;
+  } else if (value !== "intruder!" && alertPlayed === true) {
+    alert.pause();
+    body.style.backgroundColor = "black";
+  } else {
     alert.pause();
     body.style.backgroundColor = "black";
   }
