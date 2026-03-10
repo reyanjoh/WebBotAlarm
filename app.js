@@ -22,6 +22,7 @@ const connect = async () => {
   await characteristic.startNotifications();
 
   characteristic.addEventListener("characteristicvaluechanged", handleData);
+  connectButton.textContent = "Connected";
 };
 
 connectButton.addEventListener("click", connect);
