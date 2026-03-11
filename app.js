@@ -37,7 +37,10 @@ connectButton.addEventListener("click", connect);
 const handleData = (e) => {
   let value = new TextDecoder().decode(e.target.value).trim();
 
-  if (value === "intruder!" && alertPlayed === false) {
+  if (
+    value.match(/intruder!/i) ||
+    (value === "intruder!" && alertPlayed === false)
+  ) {
     alert.play();
     body.style.backgroundColor = "red";
   } else if (value !== "intruder!" && alertPlayed === true) {
